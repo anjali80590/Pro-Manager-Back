@@ -1,0 +1,15 @@
+const express = require("express");
+const taskController = require("../controllers/taskController");
+const router = express.Router();
+const auth = require("../middleware/auth");
+router.post("/posttasks/:userId", auth, taskController.createTask);
+router.get("/gettasks/:userId", auth, taskController.getTasks);
+router.put("/:taskId/checklist/:itemId", auth,taskController.updateChecklistItem);
+router.put("/:taskId/status", auth,taskController.updateTaskStatus);
+router.get("/filter", auth, taskController.filter);
+router.delete("/:taskId", auth, taskController.deleteTask);
+router.put("/:taskId", auth, taskController.updateTask);
+router.post("/:taskId/share", taskController.shareTask);
+router.get("/:taskId",auth, taskController.getTaskById);
+router.get("/alltasks/:userId",auth,taskController.getTasksByStatusAndPriority);
+module.exports = router;
