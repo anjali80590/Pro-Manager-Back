@@ -10,6 +10,6 @@ router.get("/filter", auth, taskController.filter);
 router.delete("/:taskId", auth, taskController.deleteTask);
 router.put("/:taskId", auth, taskController.updateTask);
 router.post("/:taskId/share", taskController.shareTask);
-router.get("/:taskId",auth, taskController.getTaskById);
+router.get("/:taskId", taskController.getTaskById);
 router.get("/alltasks/:userId",auth,taskController.getTasksByStatusAndPriority);
 module.exports = router;
