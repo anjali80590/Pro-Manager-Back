@@ -222,10 +222,13 @@ exports.getTasksByStatusAndPriority = async (req, res) => {
     ).length;
 
     const today = new Date();
+    // const dueDatePassedTasksCount = tasks.filter(
+    //   (task) => task.dueDate < today
+    // ).length;
     const dueDatePassedTasksCount = tasks.filter(
-      (task) => task.dueDate < today
+      (task) => task.dueDate && new Date(task.dueDate) < today
     ).length;
-
+    
     const totalBacklogTasks = backlogTasks.length;
     const totalTodoTasks = todoTasks.length;
     const totalProgressTasks = progressTasks.length;
